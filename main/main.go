@@ -17,25 +17,32 @@ func swapMain() {
 	fmt.Println(x, y)
 }
 
-func loop() {
+func even() {
 	for i:=0; i<10; i++ {
-		_p(i)
+		if i%2 == 0 {
+			_p(i)
+		}
 	}
 }
 
-func price(item string) int {
-	switch item {
-	case "apple", "tomatoes":
-		return 10
-	case "peach":
-		return 5
-	case "banana":
-		return 9
-	default:
-		return -1
+func switchFunc() {
+	closure := func (item string) int {
+		switch item {
+		case "apple", "tomatoes":
+			return 10
+		case "peach":
+			return 5
+		case "banana":
+			return 9
+		default:
+			return -1
+		}
 	}
+
+	_p(closure("apple"))
 }
+
 
 func main() {
-	_p(price("apple"))
+	switchFunc()
 }
