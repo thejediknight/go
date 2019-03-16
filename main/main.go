@@ -42,7 +42,39 @@ func switchFunc() {
 	_p(closure("apple"))
 }
 
+func sliceFunc() {
+	//~ Init a slice of int.
+	evenNums := []int{2,4,6,8}
+	
+	//~ Regular loop
+	for i:=0; i<len(evenNums); i++ {
+		_p(evenNums[i])
+	}
+
+	//~ Loop using range. Range returns (index, value)
+	for index, value := range evenNums {
+		_p(index, "=>", value)
+	} 
+
+	//~ Ignore index, just print value
+	for _, value := range evenNums {
+		_p("Value:", value)
+	} 
+
+	//~ Ignore value, just print index
+	for index, _ := range evenNums {
+		_p("Index:", index)
+	} 
+	
+	//~ Just print the list of numbers in evenNums [2 4 6 8]
+	_p(evenNums)
+
+	//~ Append 100, 101, 102 to the list evenNums. It doesnt modify evenNums.
+	list2 := append(evenNums, 100, 101, 102)
+	_p(evenNums, list2)
+
+}
 
 func main() {
-	switchFunc()
+	sliceFunc()
 }
