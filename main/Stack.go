@@ -22,12 +22,12 @@ func (s *Stack) Pop() (int, error) {
 
 	// Multi assignment
 	poppedValue, newStackData := s.data[dataLength-1], s.data[0:dataLength-1]
-	
+
 	s.data = newStackData
 	return poppedValue, nil
 }
 
-func main() {
+func StackOperations() {
 	stack := &Stack{}
 
 	stack.Push(1)
