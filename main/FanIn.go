@@ -46,7 +46,7 @@ func fanIn(chA, chB <- chan int, chC chan <- int)  {
 	}	
 }
 
-func main() {
+func FanInOperations() {
 	chA := make(chan int)
 	chB := make(chan int)
 	chC := make(chan int)
