@@ -12,7 +12,7 @@ func operation1(ch chan int)  {
 	ch <- n
 }
 
-func main() {
+func ChannelOperations() {
 	// create a channel for int, atmost holds 1 int.
 	ch := make(chan int)
 
