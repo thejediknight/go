@@ -26,7 +26,7 @@ func (q *Queue) Dequeue() (int, error) {
 	return returnVal, nil
 }
 
-func main() {
+func QueueOperations() {
 	q := &Queue{}
 
 	q.Enqueue(1)
