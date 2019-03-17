@@ -172,7 +172,3 @@ func structGo() {
 		_p(salary)
 	}
 }
-
-func main() {
-	structGo()
-}
