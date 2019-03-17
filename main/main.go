@@ -72,9 +72,42 @@ func sliceFunc() {
 	//~ Append 100, 101, 102 to the list evenNums. It doesnt modify evenNums.
 	list2 := append(evenNums, 100, 101, 102)
 	_p(evenNums, list2)
+}
 
+func mapGo() {
+	price := map[string]int {
+		"apple": 12,
+		"banana": 10,
+		"peach": 9,
+	} 
+
+	//~ Print the full map
+	_p(price)
+
+	//~ Print value of a specified key. Check for key existance as well.
+	//# Define a slice of keys. Loop through each key and print the value if it exists in map.
+	keys := []string{"apple", "pineapple"}
+	for _, key := range keys {
+		value, exists := price[key]
+		if exists == true {
+			_p(key, "=>", value)
+		} else {
+			_p(key, "doesn't exist in map")
+		}
+	
+		//~ Print using range
+		for index, value := range price {
+			if index != "banana" {
+				_p(index, "=>", value)
+			}
+		}	
+	}
+
+	//~ Add another entry in map
+	price["Avocado"] = 100
+	_p(price)
 }
 
 func main() {
-	sliceFunc()
+	mapGo()
 }
