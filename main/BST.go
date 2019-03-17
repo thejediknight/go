@@ -57,19 +57,17 @@ func printTree(node *TreeNode)  {
 }
 
 func (node *TreeNode) exists(val int) bool  {
+	if node == nil {
+		return false
+	}
+
 	if node.key == val {
 		return true
 	}
 
-	if node.key >= val {
-		if node.left == nil {
-			return false
-		}
+	if node.key > val {
 		return node.left.exists(val)
 	} else {
-		if node.right == nil {
-			return false
-		}
 		return node.right.exists(val)
 	}
 }
