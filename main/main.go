@@ -1,8 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"errors"
+)
 
 var _p = fmt.Println
+var _sp = fmt.Sprintf
 
 //~ Define a new type called User which is a struct.
 type User struct {
@@ -12,16 +16,17 @@ type User struct {
 
 //~ Extension method for type User. 
 //# Method name is Salary() taking 0 params and returns int.
-func (u User) Salary() int {
+func (u User) Salary() (int, error) {
 	switch u.Role {
 	case "Developer":
-		return 100
+		return 100, nil
 	case "Architect":
-		return 200
+		return 200, nil
 	case "Clerk":
-		return 50
+		return 50, nil
 	default:
-		return 0
+		return 0, errors.New(
+			_sp("Error! Role not found for %s!", u.Role))
 	}
 }
 
@@ -154,6 +159,19 @@ func structGo() {
 
 	// Print the struct
 	_p(user1)
+
+	// Create a new user with unsupported Role, and try to print its salary. We expect custom error.
+	user2 := User{
+		Name: "Mk",
+		Role: "Joker",
+	}
+	
+	salary, err := user2.Salary()
+	if err != nil {
+		_p(err)
+	} else {
+		_p(salary)
+	}
 }
 
 func main() {
