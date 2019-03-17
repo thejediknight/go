@@ -72,7 +72,7 @@ func (node *TreeNode) exists(val int) bool  {
 	}
 }
 
-func main() {
+func BSTOperations() {
 	tree := &Tree{}
 	tree.insert(5)
 	tree.insert(2) 
