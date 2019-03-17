@@ -166,8 +166,7 @@ func structGo() {
 		Role: "Joker",
 	}
 	
-	salary, err := user2.Salary()
-	if err != nil {
+	if salary, err := user2.Salary(); err != nil {
 		_p(err)
 	} else {
 		_p(salary)
