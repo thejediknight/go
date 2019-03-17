@@ -16,7 +16,7 @@ func (q *ChanQueue) Dequeue() (int) {
 	return <- q.items
 }
 
-func main() {
+func QueueChannelOperations() {
 
 	// Make the channel with capacity 16
 	q := &ChanQueue {
