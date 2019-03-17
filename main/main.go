@@ -4,6 +4,33 @@ import "fmt"
 
 var _p = fmt.Println
 
+//~ Define a new type called User which is a struct.
+type User struct {
+	Name, Role, Email string
+	Age int
+}
+
+//~ Extension method for type User. 
+//# Method name is Salary() taking 0 params and returns int.
+func (u User) Salary() int {
+	switch u.Role {
+	case "Developer":
+		return 100
+	case "Architect":
+		return 200
+	case "Clerk":
+		return 50
+	default:
+		return 0
+	}
+}
+
+//~ Extension method for type User. 
+//# Method name is UpdateEmail() taking 1 param and returns void.
+func (u *User) UpdateEmail(email string) {
+	u.Email = email
+}
+
 func swap(x, y int) (int, int) {
 	return y, x
 }
@@ -108,6 +135,27 @@ func mapGo() {
 	_p(price)
 }
 
+func structGo() {
+	// Create a new user from the type. Can omit a field.
+	user1 := User {
+		Name: "Bose Dk",
+		Role: "Developer",
+		Age: 18,
+	}
+
+	// Print the struct
+	_p(user1)
+
+	// Print salary of this user
+	_p(user1.Salary())
+
+	// Update the email of this user.
+	user1.UpdateEmail("bosedk@gmail.com")
+
+	// Print the struct
+	_p(user1)
+}
+
 func main() {
-	mapGo()
+	structGo()
 }
