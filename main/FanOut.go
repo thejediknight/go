@@ -43,7 +43,7 @@ func fanOut(chA <- chan int, chB, chC chan <- int)  {
 	}
 }
 
-func main() {
+func FanOutOperations() {
 	chA := make(chan int)
 	chB := make(chan int)
 	chC := make(chan int)
