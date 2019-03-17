@@ -4,19 +4,19 @@ import (
 	"fmt"
 )
 
-type Node struct {
+type DNode struct {
 	Value int
-	Prev, Next *Node
+	Prev, Next *DNode
 }
 
 type DoublyLinkedList struct {
-	Head, Tail *Node
+	Head, Tail *DNode
 }
 
 func (list *DoublyLinkedList) Add(val int) {
 
 	// Create a new node
-	node := &Node {
+	node := &DNode {
 		Value: val,
 	}
 
@@ -35,7 +35,7 @@ func (list *DoublyLinkedList) Add(val int) {
 
 func (list *DoublyLinkedList) Remove(val int) {
 	// Closure func to remove curr node from list.
-	removeInternal := func (prev *Node, curr *Node) {
+	removeInternal := func (prev *DNode, curr *DNode) {
 		// If this is the first node
 		if prev == nil {
 			// Point head to next node
@@ -61,7 +61,7 @@ func (list *DoublyLinkedList) Remove(val int) {
 	}
 	
 	curr := list.Head
-	var prev *Node = nil
+	var prev *DNode = nil
 	for ;curr != nil; {
 		fmt.Println("Debug: ", curr.Value)
 		if curr.Value == val {
