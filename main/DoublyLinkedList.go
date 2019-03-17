@@ -93,7 +93,7 @@ func (list *DoublyLinkedList) PrintListReverse() {
 }
 
 
-func main() {
+func DoublyLinkedListOperations() {
 
 	list := &DoublyLinkedList{}
 
