@@ -6,43 +6,47 @@ import (
 
 type Node struct {
 	Value int
-	Next *Node
+	Prev, Next *Node
 }
 
-type LinkedList struct {
+type DoublyLinkedList struct {
 	Head, Tail *Node
 }
 
-func (list *LinkedList) Add(val int) {
+func (list *DoublyLinkedList) Add(val int) {
 
 	// Create a new node
 	node := &Node {
 		Value: val,
-		Next: nil,
 	}
 
 	// If list is empty, point head and to this node
 	if list.Head == nil {
 		list.Head = node
 	} else {
-		// Point next of last node to this node
+		// Point next of last node to this node, and prev of node to Tail
 		list.Tail.Next = node
+		node.Prev = list.Tail
 	}
 
 	// Finally, point tail to this node
 	list.Tail = node		
 }
 
-func (list *LinkedList) Remove(val int) {
+func (list *DoublyLinkedList) Remove(val int) {
 	// Closure func to remove curr node from list.
 	removeInternal := func (prev *Node, curr *Node) {
 		// If this is the first node
 		if prev == nil {
+			// Point head to next node
 			list.Head = curr.Next
-
+			
 			// If this is the only node
 			if curr.Next == nil {
 				list.Tail = nil
+			} else {
+				// Clear prev pointer of next node
+				curr.Next.Prev = nil
 			}
 		} else {
 			prev.Next = curr.Next
@@ -50,6 +54,8 @@ func (list *LinkedList) Remove(val int) {
 			// If this is the last node, point Tail to prev
 			if curr.Next == nil {
 				list.Tail = prev
+			} else {
+				curr.Next.Prev = prev
 			}
 		}
 	}
@@ -68,7 +74,7 @@ func (list *LinkedList) Remove(val int) {
 	}
 }
 
-func (list *LinkedList) PrintList() {
+func (list *DoublyLinkedList) PrintList() {
 	h := list.Head
 	for ;h != nil; {
 		fmt.Print(h.Value, " ")
@@ -77,9 +83,19 @@ func (list *LinkedList) PrintList() {
 	fmt.Println()
 }
 
-func SingleLinkedListOperations() {
+func (list *DoublyLinkedList) PrintListReverse() {
+	t := list.Tail
+	for ;t != nil; {
+		fmt.Print(t.Value, " ")
+		t = t.Prev
+	}
+	fmt.Println()
+}
 
-	list := &LinkedList{}
+
+func main() {
+
+	list := &DoublyLinkedList{}
 
 	list.Add(1)
 	list.Add(3)
@@ -88,7 +104,9 @@ func SingleLinkedListOperations() {
 
 	list.PrintList()
 
-	list.Remove(7)
+	list.Remove(3)
 
 	list.PrintList()
+
+	list.PrintListReverse()
 }
